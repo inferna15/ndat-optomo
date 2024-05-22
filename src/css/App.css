@@ -1,0 +1,146 @@
+* {
+  margin: 0;
+  padding: 0;
+}
+html,
+body,
+.root,
+.App {
+  height: 100%;
+}
+
+/* TopMenu */
+.topmenu {
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+  height: 5%;
+  margin: 0 10px;
+  padding: 0 10px;
+  border-radius: 0 0 10px 10px;
+  background-color: black;
+  color: white;
+}
+.topmenu .left-side,
+.topmenu .right-side {
+  display: flex;
+  align-items: center;
+  gap: 10px;
+  height: 100%;
+}
+.topmenu .logo {
+  height: 100%;
+}
+.topmenu .dr-image {
+  height: 70%;
+}
+
+/* Main */
+.main {
+  display: flex;
+  height: 95%;
+}
+
+/* Sidebar */
+.sidebar {
+  height: 100%;
+  width: 20%;
+}
+
+/* Hastalarim */
+.hastalarim {
+  height: 78%;
+  border: 1px solid black;
+  border-radius: 10px;
+  box-sizing: border-box;
+  margin: 10px;
+}
+.hastalarim .buttons {
+  display: flex;
+  align-items: center;
+  justify-content: space-evenly;
+  border-bottom: 1px solid black;
+  padding: 10px;
+  box-sizing: border-box;
+}
+.hastalarim .hastaarama {
+  height: 85%;
+  padding: 10px;
+  box-sizing: border-box;
+  padding-top: 0;
+}
+.hastalarim .hastaarama .search {
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  box-sizing: border-box;
+  padding: 10px;
+}
+.hastalarim .hastaarama .hastalist {
+  display: flex;
+  flex-direction: column;
+  gap: 10px;
+  height: 95%;
+  box-sizing: border-box;
+  padding: 10px;
+  border: 1px solid black;
+  border-radius: 10px;
+  overflow: auto;
+}
+.hastalarim .hastaarama .hastalist .hastakart {
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+  border: 1px solid black;
+  border-radius: 10px;
+  padding: 10px;
+}
+.hastalarim .hastaarama .hastalist .hastakart p {
+  text-transform: capitalize;
+}
+
+/* Hastam */
+.hastam {
+  height: 18%;
+  border: 1px solid black;
+  padding: 10px;
+  border-radius: 10px;
+  box-sizing: border-box;
+  margin: 10px;
+}
+
+/* Görüntüler */
+.goruntuler {
+  display: flex;
+  height: 100%;
+  width: 80%;
+}
+.goruntuler .left-side {
+  width: 50%;
+  height: 100%;
+}
+.goruntukart .fotos img {
+  height: 100px;
+}
+.goruntuler .right-side {
+  width: 50%;
+  height: 100%;
+}
+.goruntuler .right-side .incele2D img {
+  height: 500px;
+}
+
+/* Raporlar */
+.raporlar {
+  display: flex;
+  height: 100%;
+  width: 80%;
+}
+.raporlar .left-side {
+  height: 100%;
+  width: 50%;
+}
+.raporlar .right-side {
+  height: 100%;
+  width: 50%;
+}
