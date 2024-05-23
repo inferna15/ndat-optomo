@@ -3,6 +3,8 @@ import "./css/App.css";
 import TopMenu from "./components/TopMenu";
 import Hastalarim from "./components/Hastalarim";
 import GoruntuKart from "./components/GoruntuKart";
+import Login from "./components/Login";
+import Settings from "./components/Settings";
 
 function App() {
   let DBhastalar = [
@@ -256,7 +258,7 @@ function App() {
     },
   ];
 
-  const [login, setLogin] = useState("login");
+  const [login, setLogin] = useState("unlogin");
   const [mainTab, setMainTab] = useState("anasayfa");
   const [hastaID, setHastaID] = useState(0);
   const [hastalar, setHastalar] = useState(DBhastalar);
@@ -408,37 +410,9 @@ function App() {
         </div>
       )}
       {login === "login" && mainTab === "ayarlar" && (
-        <div className="ayarlar">
-          <div className="right-side">
-            <div className="baglama">
-              <div>
-                <select name="" id="">
-                  <option value="">COM3</option>
-                  <option value="">COM4</option>
-                  <option value="">COM6</option>
-                </select>
-                <button>Bağlan</button>
-              </div>
-              <div>
-                <select name="" id="">
-                  <option value="">9600</option>
-                  <option value="">4800</option>
-                  <option value="">0</option>
-                </select>
-                <button>Bağlantıyı Kes</button>
-              </div>
-            </div>
-            <div className="turnset">
-              <label htmlFor="">Dönme Açısı:</label>
-              <input type="text" name="" id="" />
-              <label htmlFor="">Adım Miktarı:</label>
-              <input type="text" name="" id="" />
-              <button>Ayarla</button>
-            </div>
-          </div>
-          <div className="left-side"></div>
-        </div>
+        <Settings setKapak={setKapak} setBagli={setBagli} />
       )}
+      {login === "unlogin" && <Login setLogin={setLogin} />}
     </div>
   );
 }
