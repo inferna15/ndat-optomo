@@ -28,7 +28,14 @@ function App() {
           ],
         },
       ],
-      raporlar: [{ id: 0, tarih: "10-01-2000", sonuc: false, text: "" }],
+      raporlar: [
+        {
+          id: 0,
+          tarih: "10-01-2000",
+          sonuc: "true",
+          text: "Sağ meme invaziv duktal karsinom (IDC)",
+        },
+      ],
     },
     {
       id: 1,
@@ -56,8 +63,18 @@ function App() {
         },
       ],
       raporlar: [
-        { id: 0, tarih: "15-01-2010", sonuc: false, text: "" },
-        { id: 1, tarih: "17-02-2010", sonuc: false, text: "" },
+        {
+          id: 0,
+          tarih: "15-01-2010",
+          sonuc: "false",
+          text: "Sağ memede kontrast madde tutulumu gösteren, düzensiz kenarlı bir lezyon tespit edildi.",
+        },
+        {
+          id: 1,
+          tarih: "17-02-2010",
+          sonuc: "true",
+          text: "Lezyonun malign özellikler taşıdığı değerlendirildi.",
+        },
       ],
     },
     {
@@ -85,8 +102,18 @@ function App() {
         },
       ],
       raporlar: [
-        { id: 0, tarih: "23-09-2020", sonuc: false, text: "" },
-        { id: 1, tarih: "30-11-2020", sonuc: false, text: "" },
+        {
+          id: 0,
+          tarih: "23-09-2020",
+          sonuc: "true",
+          text: "Sağ memede kontrast madde tutulumu gösteren, düzensiz kenarlı bir lezyon tespit edildi.",
+        },
+        {
+          id: 1,
+          tarih: "30-11-2020",
+          sonuc: "false",
+          text: "Sağ memede palpasyonla sert ve düzensiz kenarlı bir kitle tespit edildi. Meme cildinde portakal kabuğu görünümü ve meme ucunda çekilme mevcut.",
+        },
       ],
     },
     {
@@ -115,9 +142,24 @@ function App() {
         },
       ],
       raporlar: [
-        { id: 0, tarih: "02-07-2024", sonuc: false, text: "" },
-        { id: 1, tarih: "02-11-2024", sonuc: false, text: "" },
-        { id: 2, tarih: "25-02-2025", sonuc: false, text: "" },
+        {
+          id: 0,
+          tarih: "02-07-2024",
+          sonuc: "false",
+          text: "Sağ memede üst dış kadranda yaklaşık 3 cm çapında, düzensiz kenarlı, yüksek yoğunluklu bir kitle izlendi.",
+        },
+        {
+          id: 1,
+          tarih: "02-11-2024",
+          sonuc: "true",
+          text: "Sağ memede 2.9 x 3.1 cm boyutlarında, düzensiz konturlu, hipoekoik bir kitle izlendi.",
+        },
+        {
+          id: 2,
+          tarih: "25-02-2025",
+          sonuc: "false",
+          text: "Lenf nodları normal sınırlar içinde.",
+        },
       ],
     },
     {
@@ -268,8 +310,14 @@ function App() {
   const [incele, setIncele] = useState("2D");
   const [src, setSrc] = useState({
     id: 0,
-    tarih: "00-00-0000",
-    path: "./db/0/0/270.bmp",
+    tarih: "",
+    path: "",
+  });
+  const [rapor, setRapor] = useState({
+    id: 0,
+    tarih: "",
+    sonuc: "",
+    text: "",
   });
   const [raporState, setRaporState] = useState("incele");
 
@@ -335,8 +383,8 @@ function App() {
                 {incele === "2D" && (
                   <div className="incele2D">
                     <img src={src.path} alt="image" />
-                    <p>{src.id}</p>
-                    <p>{src.tarih}</p>
+                    <p>ID: {src.id}</p>
+                    <p>Tarih: {src.tarih}</p>
                   </div>
                 )}
                 {incele === "3D" && (
@@ -367,15 +415,26 @@ function App() {
                 <div className="raporliste">
                   {DBhastalar.find(
                     (hasta) => hasta.id === hastaID
-                  ).raporlar.map((rapor) => (
+                  ).raporlar.map((ra) => (
                     <div className="rapor">
                       <div>
                         <p>
-                          Tarih: {rapor.tarih} ID: {rapor.id}
+                          Tarih: {ra.tarih} ID: {ra.id}
                         </p>
-                        <p>Sonuç: {rapor.sonuc}</p>
+                        <p>Sonuç: {ra.sonuc}</p>
                       </div>
-                      <button>Seç</button>
+                      <button
+                        onClick={() => {
+                          setRapor({
+                            id: ra.id,
+                            tarih: ra.tarih,
+                            sonuc: ra.sonuc,
+                            text: ra.text,
+                          });
+                        }}
+                      >
+                        Seç
+                      </button>
                     </div>
                   ))}
                 </div>
@@ -384,24 +443,43 @@ function App() {
                 {raporState === "incele" && (
                   <div className="raporincele">
                     <div>
-                      <p>Tarih: </p>
-                      <p>ID:</p>
-                      <p>Sonuç: </p>
-                      <p>text</p>
+                      <p>ID: {rapor.id}</p>
+                      <p>Tarih: {rapor.tarih}</p>
+                      <p>Sonuç: {rapor.sonuc} </p>
+                      <p>İçerik: {rapor.text}</p>
                     </div>
                   </div>
                 )}
                 {raporState === "olustur" && (
                   <div className="raporekle">
-                    <form action="">
-                      <label htmlFor="">Sonuç:</label>
-                      <input type="text" />
-                      <label htmlFor="">Yazı</label>
-                      <textarea name="" id=""></textarea>
-                      <button onClick={() => setRaporState("incele")}>
-                        Oluştur
-                      </button>
-                    </form>
+                    <label htmlFor="">Sonuç:</label>
+                    <input id="sonuc" type="text" />
+                    <label htmlFor="">Yazı:</label>
+                    <textarea name="" id="text"></textarea>
+                    <button
+                      onClick={() => {
+                        setRaporState("incele");
+                        let zaman = new Date();
+                        let son = document.getElementById("sonuc").innerText;
+                        let yazi = document.getElementById("text").innerText;
+                        DBhastalar.find(
+                          (hasta) => hasta.id === hastaID
+                        ).raporlar.push({
+                          id: DBhastalar.find((hasta) => hasta.id === hastaID)
+                            .raporlar.length,
+                          tarih:
+                            zaman.getDay +
+                            "-" +
+                            zaman.getMonth +
+                            "-" +
+                            zaman.getFullYear,
+                          sonuc: son,
+                          text: yazi,
+                        });
+                      }}
+                    >
+                      Oluştur
+                    </button>
                   </div>
                 )}
               </div>

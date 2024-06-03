@@ -9,7 +9,15 @@ function GoruntuKart({ goruntu, setSrc }) {
       </div>
       <div className="fotos">
         {goruntu.paths.map((foto, i) => (
-          <button>
+          <button
+            onClick={() =>
+              setSrc({
+                id: goruntu.id,
+                tarih: goruntu.tarih,
+                path: foto,
+              })
+            }
+          >
             <img src={foto} alt="img" />
           </button>
         ))}
@@ -19,9 +27,3 @@ function GoruntuKart({ goruntu, setSrc }) {
 }
 
 export default GoruntuKart;
-
-/* onClick={setSrc({
-              id: goruntu.id,
-              tarih: goruntu.tarih,
-              path: foto,
-            })} */

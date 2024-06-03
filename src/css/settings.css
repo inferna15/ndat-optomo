@@ -1,0 +1,106 @@
+.cerceve {
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  height: 100vh;
+  margin: 0;
+}
+
+.settings-container {
+  display: flex;
+  justify-content: space-between;
+  background-color: #fff;
+  padding: 20px;
+  border-radius: 8px;
+  box-shadow: 0 0 10px rgba(0, 0, 0, 0.1);
+  width: 80%;
+}
+
+.section-left,
+.section-right {
+  width: 48%;
+}
+
+.test-section,
+.connection-section,
+.parameters-section {
+  margin-bottom: 20px;
+}
+
+.h3 {
+  color: #333;
+  font-size: 18px;
+  margin-bottom: 10px;
+}
+
+.hr {
+  border: 0;
+  border-top: 1px solid #ccc;
+  margin: 10px 0;
+}
+
+.bosluk {
+  margin: 20px 0;
+}
+
+.ortala,
+.ort {
+  text-align: center;
+}
+
+.p {
+  margin: 10px 0;
+}
+
+.input {
+  padding: 5px;
+  border: 1px solid #ccc;
+  border-radius: 4px;
+  width: calc(100% - 12px);
+  box-sizing: border-box;
+}
+
+.button {
+  padding: 10px;
+  border: none;
+  border-radius: 4px;
+  cursor: pointer;
+  font-size: 14px;
+}
+
+.button.ortala {
+  width: 100%;
+  background-color: #28a745;
+  color: white;
+  margin-top: 10px;
+}
+
+.button.ortala:hover {
+  background-color: #218838;
+}
+
+.button.btn2 {
+  background-color: #007bff;
+  color: white;
+}
+
+.button.btn2:hover {
+  background-color: #0056b3;
+}
+
+.button.increase-button,
+.button.decrease-button {
+  width: 40px;
+  height: 40px;
+}
+
+.horizontal-motion {
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+}
+
+.step-buttons {
+  display: flex;
+  gap: 10px;
+}
